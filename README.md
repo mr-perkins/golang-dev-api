@@ -32,6 +32,7 @@ Alternatively you can utilize the `Makefile` with the following commands:
 
 | Command      | Description                              |
 |--------------|------------------------------------------|
+| `make run`   | docker compose up --watch                |
 | `make up`    | Starts the compose project in watch mode |
 | `make down`  | Stops the compose project                |
 | `make prune` | Removes all dangling images              |

@@ -2,6 +2,7 @@
 
 run:
 	docker compose up --watch
+	
 up:
 	docker compose watch
 

@@ -6,9 +6,9 @@ WORKDIR /app
 # RUN --mount=type=cache,target=/var/cache/apt \
 #     apt-get update && apt-get install -y build-essential
 
-# ENV CGO_ENABLED=0 \
-#     GOPATH=/go \
-#     GOCACHE=/go-build
+ENV CGO_ENABLED=0 \
+    GOPATH=/go \
+    GOCACHE=/go-build
 
 COPY go.* .
 
@@ -22,8 +22,6 @@ COPY . .
 # RUN --mount=type=cache,target=/go/pkg/mod/cache \
 #     --mount=type=cache,target=/go-build \
 #     go build -o bin/exe main.go
-
-# CMD ["/app"]
 
 # FROM builder as dev-envs
 

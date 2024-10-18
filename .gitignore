@@ -87,3 +87,5 @@ atlassian-ide-plugin.xml
 *.iml
 out
 gen
+
+.env
