@@ -15,7 +15,7 @@ COPY go.* .
 RUN go mod tidy
 RUN go mod verify
 RUN --mount=type=cache,target=/go/pkg/mod/cache \
-    go mod download
+    go mod download     
 
 COPY . .
 
