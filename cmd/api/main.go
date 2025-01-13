@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"golang-dev-api/cmd/api/server"
 	"log"
 	"log/slog"
 	"net/http"
@@ -43,19 +44,19 @@ func main() {
 	slog.Info("starting server")
 
 	http.HandleFunc("/", indexHandler)
-	if err := http.ListenAndServe(":"+port, nil); err != nil {
-		log.Printf("Error starting server: %s", err.Error())
-		os.Exit(1)
-	}
-
-	// server := server.NewServer()
-
-	// go gracefulShutdown(server)
-
-	// err := server.ListenAndServe()
-	// if err2 != nil && err != http.ErrServerClosed {
-	// 	panic(fmt.Sprintf("http server error: %s", err))
+	// if err := http.ListenAndServe(":"+port, nil); err != nil {
+	// 	log.Printf("Error starting server: %s", err.Error())
+	// 	os.Exit(1)
 	// }
+
+	server := server.NewServer()
+
+	go gracefulShutdown(server)
+
+	err := server.ListenAndServe()
+	if err != nil && err != http.ErrServerClosed {
+		panic(fmt.Sprintf("http server error: %s", err))
+	}
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
