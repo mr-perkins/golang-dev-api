@@ -10,16 +10,14 @@ ENV CGO_ENABLED=0 \
     GOPATH=/go \
     GOCACHE=/go-build
 
-COPY go.* .
+COPY ./cmd/api/go.* .
 
 RUN go mod tidy
 RUN go mod verify
 RUN --mount=type=cache,target=/go/pkg/mod/cache \
     go mod download     
 
-COPY . .
-
-# CMD ["/app"]
+COPY ./cmd/api .
 
 # RUN --mount=type=cache,target=/go/pkg/mod/cache \
 #     --mount=type=cache,target=/go-build \

@@ -9,16 +9,6 @@ import (
 	"time"
 )
 
-// import (
-// 	"fmt"
-// 	"net/http"
-// 	"os"
-// 	"strconv"
-// 	"time"
-
-// 	"golang-dev-api/cmd/api/database"
-// )
-
 type Server struct {
 	port int
 

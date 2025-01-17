@@ -1,23 +1,26 @@
 services:
-  app:
-    container_name: golang-dev-api-app
+  api:
+    # image: golang-dev-api
+    container_name: golang-dev-api
     build:
-      context: .  
-      dockerfile: Dockerfile
+      # context: ./cmd/api
+      dockerfile: ./cmd/api/Dockerfile
       target: builder
     develop:
       watch:
         - action: sync+restart
-          path: .
-          target: /app
+          path: ./cmd/api
+          target: /api
+    env_file: .env
     # volumes:
     #   - app:/app
     # secrets:
     #   - db-password
     # ports:
-    #   - "${PORT}:8000"
+    #   - "${API_PORT}:8000"
     # networks:
     #   - dev-api
+    # command: go run main.go
     depends_on: 
       database:       
         condition: service_healthy
@@ -72,10 +75,9 @@ services:
     # networks:
     #   - dev-api
     depends_on: 
-      - app
+      - api
 
 volumes:
-  # app:
   database:
 
 # networks: 

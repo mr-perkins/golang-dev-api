@@ -7,16 +7,11 @@ import (
 	"log"
 	"log/slog"
 	"net/http"
-	"os"
 	"os/signal"
 	"syscall"
 	"time"
 
 	_ "github.com/lib/pq"
-)
-
-var (
-	port = os.Getenv("API_PORT")
 )
 
 func gracefulShutdown(apiServer *http.Server) {
