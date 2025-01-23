@@ -1,6 +1,6 @@
 services:
   app:
-    container_name: golang-dev-api
+    container_name: golang-dev-api-app
     build:
       # context: ./cmd/api
       dockerfile: Dockerfile

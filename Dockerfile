@@ -38,7 +38,7 @@ COPY . .
 # install Docker tools (cli, buildx, compose)
 # COPY --from=gloursdocker/docker / /
 
-CMD ["go", "run", "main.go"]
+CMD ["go", "run", "/app/cmd/api/main.go"]
 
 # FROM scratch
 # COPY --from=builder /app/bin/exe /usr/local/bin/exe
