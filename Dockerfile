@@ -1,7 +1,7 @@
 FROM --platform=$BUILDPLATFORM golang:alpine AS builder
 
-RUN mkdir /api
-WORKDIR /api
+RUN mkdir /app
+WORKDIR /app
 
 # RUN --mount=type=cache,target=/var/cache/apt \
 #     apt-get update && apt-get install -y build-essential
@@ -10,14 +10,14 @@ ENV CGO_ENABLED=0 \
     GOPATH=/go \
     GOCACHE=/go-build
 
-COPY ./cmd/api/go.* .
+COPY ./go.* .
 
 RUN go mod tidy
 RUN go mod verify
 RUN --mount=type=cache,target=/go/pkg/mod/cache \
     go mod download     
 
-COPY ./cmd/api .
+COPY . .
 
 # RUN --mount=type=cache,target=/go/pkg/mod/cache \
 #     --mount=type=cache,target=/go-build \

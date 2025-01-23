@@ -1,10 +1,10 @@
-module golang-dev-api/cmd/api
+module golang-dev-api
 
-go 1.23.2
+go 1.23.5
 
 require (
 	github.com/jackc/pgx/v5 v5.7.1
-	github.com/lib/pq v1.10.9
+	github.com/joho/godotenv v1.5.1
 )
 
 require (

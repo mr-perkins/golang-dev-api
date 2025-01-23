@@ -1,17 +1,16 @@
 services:
-  api:
-    # image: golang-dev-api
+  app:
     container_name: golang-dev-api
     build:
       # context: ./cmd/api
-      dockerfile: ./cmd/api/Dockerfile
+      dockerfile: Dockerfile
       target: builder
     develop:
       watch:
         - action: sync+restart
-          path: ./cmd/api
-          target: /api
-    env_file: .env
+          path: .
+          target: /app
+    # env_file: .env
     # volumes:
     #   - app:/app
     # secrets:
@@ -75,7 +74,7 @@ services:
     # networks:
     #   - dev-api
     depends_on: 
-      - api
+      - app
 
 volumes:
   database:
